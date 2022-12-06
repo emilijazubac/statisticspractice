@@ -1,0 +1,23 @@
+> vec1 <- 1:9
+> m <- matrix(vec1, nrow = 3)
+> m
+[,1] [,2] [,3]
+[1,]    1    4    7
+[2,]    2    5    8
+[3,]    3    6    9
+> class(m)
+[1] "matrix" "array"
+> typeof(m)
+[1] "integer"
+> m <- matrix(LETTERS[1:9])
+> m <- matrix(LETTERS[1:9], ncol = 3)
+> m <- matrix(LETTERS[1:9], ncol = 3)
+> m <- matrix(data = LETTERS[1:9], ncol = 3, byrow = TRUE)
+> first_row <- 1:5
+> second_row <- 11:15
+> third_row <- 101:105
+> rbind(first_row, second_row, third_row)
+[,1] [,2] [,3] [,4] [,5]
+first_row     1    2    3    4    5
+second_row   11   12   13   14   15
+third_row   101  102  103  104  105
