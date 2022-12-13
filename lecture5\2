@@ -1,0 +1,411 @@
+> student <- "emilija"
+> scores <- c(first_test = 26, second_test = 25, fourth_test = 38)
+> is_enrolled <- FALSE
+> my_list <- list(student=student, scores=scores,enrollment=is_enrolled)
+> my_list
+$student
+[1] "emilija"
+
+$scores
+ first_test second_test fourth_test 
+         26          25          38 
+
+$enrollment
+[1] FALSE
+
+> my_list[[1]]
+[1] "emilija"
+> my_list[["student"]]
+[1] "emilija"
+> my_list$student
+[1] "emilija"
+> my_list[1]
+$student
+[1] "emilija"
+
+> my_list[[2]]
+ first_test second_test fourth_test 
+         26          25          38 
+> my_list[[2][1]]
+Error: unexpected '[' in "my_list[[2]["
+> my_list[[2]][1]
+first_test 
+        26 
+> my_list[[c(2,1)]]
+[1] 26
+> str(my_list)
+List of 3
+ $ student   : chr "emilija"
+ $ scores    : Named num [1:3] 26 25 38
+  ..- attr(*, "names")= chr [1:3] "first_test" "second_test" "fourth_test"
+ $ enrollment: logi FALSE
+> my_list[["scores"]]["first_test"]
+first_test 
+        26 
+> my_list[["scores"]]["first_test"] <- 27
+> my_list
+$student
+[1] "emilija"
+
+$scores
+ first_test second_test fourth_test 
+         27          25          38 
+
+$enrollment
+[1] FALSE
+
+> my_list[["course"]] <- "GCE"
+> my_list$internship <- FALSE
+> my_list
+$student
+[1] "emilija"
+
+$scores
+ first_test second_test fourth_test 
+         27          25          38 
+
+$enrollment
+[1] FALSE
+
+$course
+[1] "GCE"
+
+$internship
+[1] FALSE
+
+> length(my_list)
+[1] 5
+> str(my_list)
+List of 5
+ $ student   : chr "emilija"
+ $ scores    : Named num [1:3] 27 25 38
+  ..- attr(*, "names")= chr [1:3] "first_test" "second_test" "fourth_test"
+ $ enrollment: logi FALSE
+ $ course    : chr "GCE"
+ $ internship: logi FALSE
+> my_list[[8]] <- "B2"
+> my_list
+$student
+[1] "emilija"
+
+$scores
+ first_test second_test fourth_test 
+         27          25          38 
+
+$enrollment
+[1] FALSE
+
+$course
+[1] "GCE"
+
+$internship
+[1] FALSE
+
+[[6]]
+NULL
+
+[[7]]
+NULL
+
+[[8]]
+[1] "B2"
+
+> names(my_list)[8] <- "english certification"
+> names(my_list)
+[1] "student"               "scores"               
+[3] "enrollment"            "course"               
+[5] "internship"            ""                     
+[7] ""                      "english certification"
+> my_list[[6]]
+NULL
+> my_list[[6]] <- NULL
+> str(my_list)
+List of 7
+ $ student              : chr "emilija"
+ $ scores               : Named num [1:3] 27 25 38
+  ..- attr(*, "names")= chr [1:3] "first_test" "second_test" "fourth_test"
+ $ enrollment           : logi FALSE
+ $ course               : chr "GCE"
+ $ internship           : logi FALSE
+ $                      : NULL
+ $ english certification: chr "B2"
+> my_list[-6]
+$student
+[1] "emilija"
+
+$scores
+ first_test second_test fourth_test 
+         27          25          38 
+
+$enrollment
+[1] FALSE
+
+$course
+[1] "GCE"
+
+$internship
+[1] FALSE
+
+$`english certification`
+[1] "B2"
+
+> my_list <- my_list[-6]
+> str(my_list)
+List of 6
+ $ student              : chr "emilija"
+ $ scores               : Named num [1:3] 27 25 38
+  ..- attr(*, "names")= chr [1:3] "first_test" "second_test" "fourth_test"
+ $ enrollment           : logi FALSE
+ $ course               : chr "GCE"
+ $ internship           : logi FALSE
+ $ english certification: chr "B2"
+> 
+> list1 <- list(a1= 1:10, b1= LETTERS[1:3])
+> LIST1
+Error: object 'LIST1' not found
+> list1
+$a1
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$b1
+[1] "A" "B" "C"
+
+> list2 <- list(a2=c(2.2,3.1), b2=(FALSE, TRUE))
+Error: unexpected ',' in "list2 <- list(a2=c(2.2,3.1), b2=(FALSE,"
+> list2 <- list(a2=c(2.2,3.1), b2=C(FALSE, TRUE))
+Error in C(FALSE, TRUE) : object not interpretable as a factor
+> list2 <- list(a2=c(2.2,3.1), b2=c(FALSE, TRUE))
+> list2
+$a2
+[1] 2.2 3.1
+
+$b2
+[1] FALSE  TRUE
+
+> c(list1,list2)
+$a1
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$b1
+[1] "A" "B" "C"
+
+$a2
+[1] 2.2 3.1
+
+$b2
+[1] FALSE  TRUE
+
+> c(list1=list1,list2=list2)
+$list1.a1
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$list1.b1
+[1] "A" "B" "C"
+
+$list2.a2
+[1] 2.2 3.1
+
+$list2.b2
+[1] FALSE  TRUE
+
+> list(list1,list2)
+[[1]]
+[[1]]$a1
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+[[1]]$b1
+[1] "A" "B" "C"
+
+
+[[2]]
+[[2]]$a2
+[1] 2.2 3.1
+
+[[2]]$b2
+[1] FALSE  TRUE
+
+
+> list(list1=list1, list2=list2)
+$list1
+$list1$a1
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+$list1$b1
+[1] "A" "B" "C"
+
+
+$list2
+$list2$a2
+[1] 2.2 3.1
+
+$list2$b2
+[1] FALSE  TRUE
+
+
+> str(c(list1=list1,list2=list2))
+List of 4
+ $ list1.a1: int [1:10] 1 2 3 4 5 6 7 8 9 10
+ $ list1.b1: chr [1:3] "A" "B" "C"
+ $ list2.a2: num [1:2] 2.2 3.1
+ $ list2.b2: logi [1:2] FALSE TRUE
+> 
+> dat <- data.frame(a=1:10, b=letters[1:10], c=rep(c(FALSE,TRUE),5))
+> DAT
+Error: object 'DAT' not found
+> dat
+    a b     c
+1   1 a FALSE
+2   2 b  TRUE
+3   3 c FALSE
+4   4 d  TRUE
+5   5 e FALSE
+6   6 f  TRUE
+7   7 g FALSE
+8   8 h  TRUE
+9   9 i FALSE
+10 10 j  TRUE
+> str(dat)
+'data.frame':	10 obs. of  3 variables:
+ $ a: int  1 2 3 4 5 6 7 8 9 10
+ $ b: chr  "a" "b" "c" "d" ...
+ $ c: logi  FALSE TRUE FALSE TRUE FALSE TRUE ...
+> nrow(dat)
+[1] 10
+> ncol(dat)
+[1] 3
+> dim(dat)
+[1] 10  3
+> names(dat)
+[1] "a" "b" "c"
+> names(dat) <- c("col1", "col2","col3")
+> dat
+   col1 col2  col3
+1     1    a FALSE
+2     2    b  TRUE
+3     3    c FALSE
+4     4    d  TRUE
+5     5    e FALSE
+6     6    f  TRUE
+7     7    g FALSE
+8     8    h  TRUE
+9     9    i FALSE
+10   10    j  TRUE
+> dat[1,]
+  col1 col2  col3
+1    1    a FALSE
+> class(dat[1,])
+[1] "data.frame"
+> dat[,2]
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
+> dat[,2:3]
+   col2  col3
+1     a FALSE
+2     b  TRUE
+3     c FALSE
+4     d  TRUE
+5     e FALSE
+6     f  TRUE
+7     g FALSE
+8     h  TRUE
+9     i FALSE
+10    j  TRUE
+> dat[[2]]
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
+> dat[["col2"]]
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
+> dat[,"col2"]
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
+> dat$col2
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j"
+> dat$col1 <6
+ [1]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE
+ [9] FALSE FALSE
+> dat[dat$col1 < 6,]
+  col1 col2  col3
+1    1    a FALSE
+2    2    b  TRUE
+3    3    c FALSE
+4    4    d  TRUE
+5    5    e FALSE
+> dat[dat$col3 == FALSE,]
+  col1 col2  col3
+1    1    a FALSE
+3    3    c FALSE
+5    5    e FALSE
+7    7    g FALSE
+9    9    i FALSE
+> 
+> dat$col4 <- LETTERS [1:10]
+> dat
+   col1 col2  col3 col4
+1     1    a FALSE    A
+2     2    b  TRUE    B
+3     3    c FALSE    C
+4     4    d  TRUE    D
+5     5    e FALSE    E
+6     6    f  TRUE    F
+7     7    g FALSE    G
+8     8    h  TRUE    H
+9     9    i FALSE    I
+10   10    j  TRUE    J
+> dat[1,1] <- 1.4
+> dat
+   col1 col2  col3 col4
+1   1.4    a FALSE    A
+2   2.0    b  TRUE    B
+3   3.0    c FALSE    C
+4   4.0    d  TRUE    D
+5   5.0    e FALSE    E
+6   6.0    f  TRUE    F
+7   7.0    g FALSE    G
+8   8.0    h  TRUE    H
+9   9.0    i FALSE    I
+10 10.0    j  TRUE    J
+> dat$col4 <- NULL
+> dat
+   col1 col2  col3
+1   1.4    a FALSE
+2   2.0    b  TRUE
+3   3.0    c FALSE
+4   4.0    d  TRUE
+5   5.0    e FALSE
+6   6.0    f  TRUE
+7   7.0    g FALSE
+8   8.0    h  TRUE
+9   9.0    i FALSE
+10 10.0    j  TRUE
+> dat[,-3]
+   col1 col2
+1   1.4    a
+2   2.0    b
+3   3.0    c
+4   4.0    d
+5   5.0    e
+6   6.0    f
+7   7.0    g
+8   8.0    h
+9   9.0    i
+10 10.0    j
+> dat_1 <- data.frame(genus=c("Silene","Pinus"), has_flower=c(TRUE, FALSE), n=c(10,2))
+> dat_1
+   genus has_flower  n
+1 Silene       TRUE 10
+2  Pinus      FALSE  2
+> dat_2
+Error: object 'dat_2' not found
+> dat_2 <- data.frame(genus="Malus", has_flower= TRUE, n=1)
+> dat_2
+  genus has_flower n
+1 Malus       TRUE 1
+> rbind(dat_1,dat_2)
+   genus has_flower  n
+1 Silene       TRUE 10
+2  Pinus      FALSE  2
+3  Malus       TRUE  1
+> dat_3<-rbind(dat_1,dat_2)
+> is_herbaceous <- c(TRUE, FALSE, FALSE)
+> cbind(dat_3, is_herbaceous)
+   genus has_flower  n is_herbaceous
+1 Silene       TRUE 10          TRUE
+2  Pinus      FALSE  2         FALSE
+3  Malus       TRUE  1         FALSE
